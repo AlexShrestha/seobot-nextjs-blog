@@ -4,12 +4,12 @@ import { type Metadata } from 'next';
 import { BlogClient } from 'seobot';
 
 export async function generateMetadata(): Promise<Metadata> {
-  const title = 'SeoBot Blog';
-  const description = 'Get the inside scoop on SeoBot - the AI-powered SEO solution for content creation, optimization, and automated traffic growth on Autopilot.';
+  const title = 'Never Miss Health Blog';
+  const description = 'Stay informed about preventive healthcare, cancer screenings, and wellness tips to take control of your health journey.';
   return {
     title,
     description,
-    metadataBase: new URL('https://seobotai.com'),
+    metadataBase: new URL('https://nevermisshealth.com'),
     alternates: {
       canonical: '/blog',
     },
@@ -17,22 +17,17 @@ export async function generateMetadata(): Promise<Metadata> {
       type: 'website',
       title,
       description,
-      // images: [],
-      url: 'https://seobotai.com/blog',
+      url: 'https://nevermisshealth.com/blog',
     },
     twitter: {
       title,
       description,
-      // card: 'summary_large_image',
-      // images: [],
     },
   };
 }
 
 async function getPosts(page: number) {
-  const key = process.env.SEOBOT_API_KEY;
-  if (!key) throw Error('SEOBOT_API_KEY enviroment variable must be set. You can use the DEMO key a8c58738-7b98-4597-b20a-0bb1c2fe5772 for testing - please set it in the root .env.local file');
-
+  const key = '04ad1a7e-507a-463a-8466-6ade6ce0adc8'; // Using the provided API key
   const client = new BlogClient(key);
   return client.getArticles(page, 10);
 }
@@ -46,8 +41,11 @@ export default async function Blog({ searchParams: { page } }: { searchParams: {
   const lastPage = Math.ceil(total / 10);
 
   return (
-    <section className="max-w-3xl my-8 lg:mt-10 mx-auto px-4 md:px-8 dark:text-white tracking-normal">
-      <h1 className="text-4xl my-4 font-black">SeoBot Blog</h1>
+    <section className="max-w-3xl my-8 lg:mt-10 mx-auto px-4 md:px-8 text-slate-800 tracking-normal">
+      <div className="mb-8">
+        <h1 className="text-4xl my-4 font-black text-teal-600">Health & Wellness Blog</h1>
+        <p className="text-slate-600">Stay informed about preventive healthcare, cancer screenings, and wellness tips to take control of your health journey.</p>
+      </div>
       <ul>
         {posts.map((article: any) => (
           <ArticleCard key={article.id} article={article} />
