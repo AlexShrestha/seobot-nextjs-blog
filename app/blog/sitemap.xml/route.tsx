@@ -1,8 +1,7 @@
-const BASE_URL = 'https://devhunt.org';
+const BASE_URL = 'https://nevermisshealth.com';
 
 async function getSitemap() {
-  const key = process.env.SEOBOT_API_KEY;
-  if (!key) throw Error('SEOBOT_API_KEY enviroment variable must be set. You can use the DEMO key a8c58738-7b98-4597-b20a-0bb1c2fe5772 for testing - please set it in the root .env.local file.');
+  const key = '04ad1a7e-507a-463a-8466-6ade6ce0adc8'; // Using the provided API key directly
 
   try {
     const res = await fetch(`https://app.seobotai.com/api/sitemap?key=${key}`, { cache: 'no-store' });
@@ -24,7 +23,7 @@ async function generateSiteMap() {
   return `<?xml version="1.0" encoding="UTF-8"?>
    <urlset xmlns="https://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-      <loc>https://devhunt.org/blog</loc>
+      <loc>https://nevermisshealth.com/blog</loc>
     </url>
      ${blogSitemap.articles.map((i: SitemapItem) => toSitemapRecord(`/blog/${i.slug}`, i.lastmod))}
      ${blogSitemap.categories.map((i: SitemapItem) => toSitemapRecord(`/blog/category/${i.slug}`, i.lastmod))}

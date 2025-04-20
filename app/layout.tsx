@@ -34,6 +34,18 @@ export default function RootLayout({
         <link rel="icon" href="/favicon-new.svg" type="image/svg+xml" />
         <link rel="alternate icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon-new.svg" />
+        {/* Google Analytics */}
+        <script async src="https://www.googletagmanager.com/gtag/js?id=G-BK8FB9B2RC"></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-BK8FB9B2RC');
+            `,
+          }}
+        />
       </head>
       <body className={`${inter.className} h-full antialiased`}>{children}</body>
     </html>

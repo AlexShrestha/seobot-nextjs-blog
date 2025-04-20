@@ -112,7 +112,7 @@
 
 .article > .tags {
   display: flex;
-  justify-content: start;
+  justify-content: flex-start;
   flex-wrap: wrap;
   gap: 10px;
   width: 100%;
